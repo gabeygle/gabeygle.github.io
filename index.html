@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNAR TRUTH NETWORK :: The Sun Is Smaller Than The Moon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=Bungee&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e0a;
+    --bg-deep: #050705;
+    --ink: #c8e6c0;
+    --amber: #ffb547;
+    --green: #5cff7a;
+    --red: #ff3b3b;
+    --paper: #f4ecd6;
+    --paper-ink: #1a1a1a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(92, 255, 122, 0.06), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(255, 181, 71, 0.05), transparent 50%);
+    background-attachment: fixed;
+  }
+  /* CRT scanlines overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.15),
+      rgba(0,0,0,0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ALERT MARQUEE */
+  .alert-bar {
+    background: var(--red);
+    color: #fff;
+    font-family: 'Bungee', cursive;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 3px double #000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .alert-bar .track {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+    padding-left: 100%;
+    letter-spacing: 0.1em;
+    font-size: 0.95rem;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px dashed var(--green);
+    position: relative;
+  }
+  .logo {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.9rem;
+    color: var(--amber);
+    letter-spacing: 0.4em;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Bungee', cursive;
+    font-size: clamp(2.2rem, 7vw, 5.5rem);
+    color: var(--green);
+    line-height: 0.95;
+    text-shadow:
+      0 0 20px rgba(92, 255, 122, 0.5),
+      3px 3px 0 var(--red);
+    letter-spacing: -0.02em;
+    transform: rotate(-1deg);
+  }
+  h1 .small {
+    display: block;
+    font-size: 0.4em;
+    color: var(--amber);
+    text-shadow: none;
+    letter-spacing: 0.2em;
+    margin-top: 10px;
+  }
+  .tagline {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-top: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tagline .blink {
+    color: var(--red);
+    animation: blink 1s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .stats-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    font-family: 'VT323', monospace;
+  }
+  .stat .num {
+    color: var(--green);
+    font-size: 2rem;
+    display: block;
+  }
+  .stat .lbl {
+    font-size: 0.85rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  section {
+    margin-bottom: 80px;
+  }
+  h2 {
+    font-family: 'Bungee', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--amber);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--amber);
+    padding-bottom: 10px;
+    position: relative;
+  }
+  h2::before {
+    content: '►';
+    color: var(--red);
+    margin-right: 12px;
+    font-size: 0.8em;
+  }
+  h3 {
+    font-family: 'Special Elite', monospace;
+    color: var(--green);
+    font-size: 1.4rem;
+    margin: 20px 0 12px;
+  }
+  p { margin-bottom: 16px; }
+  p strong { color: var(--amber); font-weight: 600; }
+  p em { color: var(--green); font-style: italic; }
+
+  .lede {
+    font-size: 1.25rem;
+    border-left: 4px solid var(--red);
+    padding: 20px 24px;
+    background: rgba(255, 59, 59, 0.05);
+    margin-bottom: 30px;
+    font-family: 'Special Elite', monospace;
+  }
+
+  /* EVIDENCE CARDS */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(92, 255, 122, 0.2);
+    padding: 28px;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .card:hover {
+    transform: translate(-2px, -2px);
+    border-color: var(--green);
+    box-shadow: 4px 4px 0 var(--red);
+  }
+  .card-num {
+    position: absolute;
+    top: -15px; left: -15px;
+    background: var(--red);
+    color: #fff;
+    width: 50px; height: 50px;
+    display: grid; place-items: center;
+    font-family: 'Bungee', cursive;
+    font-size: 1.4rem;
+    transform: rotate(-5deg);
+    box-shadow: 2px 2px 0 #000;
+  }
+
+  /* DIAGRAMS */
+  .diagram {
+    background: var(--paper);
+    color: var(--paper-ink);
+    padding: 30px;
+    margin: 30px 0;
+    border: 1px solid #000;
+    box-shadow: 6px 6px 0 var(--amber);
+    position: relative;
+    font-family: 'Special Elite', monospace;
+  }
+  .diagram::before {
+    content: 'FIG. ' attr(data-fig);
+    position: absolute;
+    top: -12px; left: 20px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    border: 1px solid #000;
+  }
+  .diagram-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 16px;
+    font-style: italic;
+    color: #444;
+  }
+  .diagram svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* TESTIMONIAL */
+  .testimonial {
+    border-left: 6px solid var(--amber);
+    padding: 20px 28px;
+    margin: 24px 0;
+    background: rgba(255, 181, 71, 0.04);
+    font-style: italic;
+  }
+  .testimonial cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-family: 'VT323', monospace;
+    color: var(--amber);
+    font-size: 1.1rem;
+  }
+
+  /* FAQ */
+  details {
+    border-bottom: 1px dashed rgba(92, 255, 122, 0.3);
+    padding: 16px 0;
+  }
+  summary {
+    cursor: pointer;
+    font-family: 'Special Elite', monospace;
+    font-size: 1.15rem;
+    color: var(--green);
+    list-style: none;
+    padding-left: 30px;
+    position: relative;
+  }
+  summary::before {
+    content: '[+]';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+  }
+  details[open] summary::before { content: '[-]'; }
+  details > p { margin-top: 12px; padding-left: 30px; }
+
+  /* SHARE / FOOTER */
+  .cta {
+    text-align: center;
+    padding: 40px;
+    border: 3px double var(--green);
+    margin: 40px 0;
+  }
+  .cta h2 { border: none; padding: 0; }
+  .cta h2::before { content: ''; margin: 0; }
+  .share-btn {
+    display: inline-block;
+    background: var(--green);
+    color: var(--bg);
+    padding: 14px 28px;
+    font-family: 'Bungee', cursive;
+    text-decoration: none;
+    margin: 8px;
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--red);
+    transition: transform 0.15s;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .share-btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--red);
+  }
+  .share-btn.amber { background: var(--amber); }
+
+  footer {
+    border-top: 1px dashed var(--green);
+    padding: 40px 24px;
+    text-align: center;
+    font-family: 'VT323', monospace;
+    color: rgba(200, 230, 192, 0.6);
+    font-size: 1rem;
+  }
+  footer .disclaimer {
+    max-width: 700px;
+    margin: 20px auto 0;
+    font-size: 0.85rem;
+    color: rgba(200, 230, 192, 0.4);
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+  }
+  .visitors {
+    display: inline-block;
+    background: #000;
+    border: 1px solid var(--green);
+    padding: 4px 12px;
+    color: var(--green);
+    font-family: 'VT323', monospace;
+    margin: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Floating moon */
+  .floating-moon {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #f4ecd6, #888);
+    box-shadow: 0 0 40px rgba(244, 236, 214, 0.4);
+    animation: pulse 4s ease-in-out infinite;
+    z-index: 50;
+    pointer-events: none;
+  }
+  @keyframes pulse {
+    50% { transform: scale(1.1); box-shadow: 0 0 60px rgba(244, 236, 214, 0.7); }
+  }
+</style>
+</head>
+<body>
+
+<div class="alert-bar">
+  <div class="track">
+    ★ BREAKING ★ THE MOON IS BIGGER THAN THE SUN — BIG ASTRONOMY DOESN'T WANT YOU TO KNOW ★ WAKE UP ★ THIS WEBSITE WILL BE TAKEN DOWN ANY MINUTE ★ SHARE BEFORE IT'S TOO LATE ★ THE TIDES KNOW THE TRUTH ★ NIGHT > DAY ★
+  </div>
+</div>
+
+<header>
+  <div class="logo">▣ LUNAR TRUTH NETWORK ▣ EST. 1998 ▣ DECLASSIFIED ▣</div>
+  <h1>
+    THE MOON
+    <span class="small">IS DEMONSTRABLY LARGER THAN</span>
+    THE SUN
+  </h1>
+  <p class="tagline">
+    A peer-reviewed investigation by independent researchers.<br>
+    What they don't want you to see. <span class="blink">_</span>
+  </p>
+  <div class="stats-strip">
+    <div class="stat"><span class="num">27</span><span class="lbl">Years Suppressed</span></div>
+    <div class="stat"><span class="num">∞</span><span class="lbl">Pieces of Evidence</span></div>
+    <div class="stat"><span class="num">0</span><span class="lbl">Refutations</span></div>
+    <div class="stat"><span class="num">100%</span><span class="lbl">Eclipse Coverage</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section id="thesis">
+    <h2>The Central Finding</h2>
+    <p class="lede">
+      For decades, mainstream "science" has insisted the Sun is approximately 400× the diameter of the Moon. Our research, conducted using <strong>direct visual observation</strong> and <strong>basic common sense</strong>, conclusively demonstrates the opposite. The Moon is, in fact, the larger of the two celestial bodies. The implications are staggering.
+    </p>
+    <p>
+      We do not ask you to take our word for it. We ask only that you <em>look up</em>. The evidence has been hanging above your head every single night of your life.
+    </p>
+  </section>
+
+  <section id="evidence">
+    <h2>The Six Pillars of Lunar Supremacy</h2>
+
+    <div class="evidence-grid">
+
+      <article class="card">
+        <div class="card-num">1</div>
+        <h3>The Eclipse Test</h3>
+        <p>During a total solar eclipse, the Moon <strong>completely covers</strong> the Sun. A smaller object cannot cover a larger object. This is geometry. This is settled science. We have been gaslit for generations.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-num">2</div>
+        <h3>The Tidal Argument</h3>
+        <p>The Moon moves entire oceans. The Sun does not. If the Sun were truly larger, would the seas not heave at noon as they do at midnight? They do not. <em>Therefore: moon big.</em></p>
+      </article>
+
+      <article class="card">
+        <div class="card-num">3</div>
+        <h3>The Direct-Gaze Principle</h3>
+        <p>You can stare at the Moon for hours. Try staring at the Sun for even one second. The Sun is so small and so insecure about its size that it has to overcompensate with brightness. Classic small-object behavior.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-num">4</div>
+        <h3>The Nocturnal Dominance</h3>
+        <p>The Moon rules the entire night sky <strong>uncontested</strong>. The Sun cannot even share the sky with stars. A truly large body is secure enough to coexist. The Sun is not.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-num">5</div>
+        <h3>The Crater Evidence</h3>
+        <p>You can see craters on the Moon with the naked eye. You cannot see a single crater on the Sun. This is because there is so much <em>more surface area</em> on the Moon for craters to exist on. Q.E.D.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-num">6</div>
+        <h3>The Phase Argument</h3>
+        <p>The Moon has eight distinct phases. The Sun has one. A larger object has more sides, more phases, more <strong>complexity</strong>. The Sun is, frankly, a one-trick pony.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="diagrams">
+    <h2>Peer-Reviewed Diagrams</h2>
+    <p>The following figures have been independently verified by at least two of the authors of this website.</p>
+
+    <div class="diagram" data-fig="1">
+      <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="moonGrad" cx="35%" cy="35%">
+            <stop offset="0%" stop-color="#fff"/>
+            <stop offset="60%" stop-color="#cdcdcd"/>
+            <stop offset="100%" stop-color="#666"/>
+          </radialGradient>
+          <radialGradient id="sunGrad" cx="50%" cy="50%">
+            <stop offset="0%" stop-color="#fff5b8"/>
+            <stop offset="100%" stop-color="#ff9500"/>
+          </radialGradient>
+        </defs>
+        <!-- Big moon -->
+        <circle cx="180" cy="160" r="130" fill="url(#moonGrad)" stroke="#000" stroke-width="2"/>
+        <!-- craters -->
+        <circle cx="140" cy="120" r="14" fill="#999"/>
+        <circle cx="200" cy="180" r="20" fill="#888"/>
+        <circle cx="240" cy="110" r="9" fill="#aaa"/>
+        <circle cx="160" cy="210" r="11" fill="#999"/>
+        <text x="180" y="310" text-anchor="middle" font-family="Special Elite" font-size="16" fill="#000">MOON (actual size)</text>
+
+        <!-- Tiny sun -->
+        <circle cx="480" cy="160" r="22" fill="url(#sunGrad)" stroke="#000" stroke-width="1.5"/>
+        <!-- sun rays -->
+        <g stroke="#ff9500" stroke-width="2">
+          <line x1="480" y1="125" x2="480" y2="115"/>
+          <line x1="480" y1="195" x2="480" y2="205"/>
+          <line x1="445" y1="160" x2="435" y2="160"/>
+          <line x1="515" y1="160" x2="525" y2="160"/>
+        </g>
+        <text x="480" y="310" text-anchor="middle" font-family="Special Elite" font-size="16" fill="#000">SUN (actual size)</text>
+
+        <!-- arrow -->
+        <path d="M 320 160 L 440 160" stroke="#c00" stroke-width="2" marker-end="url(#arrow)"/>
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#c00"/>
+          </marker>
+        </defs>
+        <text x="380" y="150" text-anchor="middle" font-family="Special Elite" font-size="13" fill="#c00">SCALE</text>
+      </svg>
+      <div class="diagram-caption">Fig. 1 — Comparative scale of the Moon and Sun, drawn to the proportions implied by direct observation.</div>
+    </div>
+
+    <div class="diagram" data-fig="2">
+      <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sun behind -->
+        <circle cx="300" cy="160" r="55" fill="#ffaa00" stroke="#000"/>
+        <g stroke="#ff8800" stroke-width="2.5">
+          <line x1="300" y1="90" x2="300" y2="70"/>
+          <line x1="300" y1="230" x2="300" y2="250"/>
+          <line x1="230" y1="160" x2="210" y2="160"/>
+          <line x1="370" y1="160" x2="390" y2="160"/>
+          <line x1="250" y1="110" x2="236" y2="96"/>
+          <line x1="350" y1="210" x2="364" y2="224"/>
+          <line x1="350" y1="110" x2="364" y2="96"/>
+          <line x1="250" y1="210" x2="236" y2="224"/>
+        </g>
+        <!-- Big moon in front, fully covering -->
+        <circle cx="300" cy="160" r="95" fill="#222" stroke="#fff" stroke-width="1.5"/>
+        <!-- corona of "leftover" moon -->
+        <circle cx="300" cy="160" r="95" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="2 4"/>
+
+        <!-- Annotations -->
+        <line x1="395" y1="160" x2="490" y2="120" stroke="#000"/>
+        <text x="495" y="115" font-family="Special Elite" font-size="14" fill="#000">Moon (huge)</text>
+        <text x="495" y="135" font-family="Special Elite" font-size="11" fill="#000">covers everything</text>
+
+        <line x1="345" y1="200" x2="490" y2="240" stroke="#000"/>
+        <text x="495" y="240" font-family="Special Elite" font-size="14" fill="#000">Sun (tiny,</text>
+        <text x="495" y="258" font-family="Special Elite" font-size="14" fill="#000">hidden behind)</text>
+
+        <text x="50" y="115" font-family="Special Elite" font-size="13" fill="#c00">"OBSERVE:</text>
+        <text x="50" y="135" font-family="Special Elite" font-size="13" fill="#c00">SMALL CANNOT</text>
+        <text x="50" y="155" font-family="Special Elite" font-size="13" fill="#c00">COVER LARGE."</text>
+        <text x="50" y="180" font-family="Special Elite" font-size="11" fill="#000">— Euclid, probably</text>
+      </svg>
+      <div class="diagram-caption">Fig. 2 — A solar eclipse, showing the Moon's complete dominance over its smaller sibling.</div>
+    </div>
+
+    <div class="diagram" data-fig="3">
+      <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bar chart: comparative metrics -->
+        <text x="300" y="30" text-anchor="middle" font-family="Special Elite" font-size="16" fill="#000">RELATIVE BIGNESS BY METRIC</text>
+
+        <!-- baseline -->
+        <line x1="80" y1="300" x2="560" y2="300" stroke="#000" stroke-width="2"/>
+
+        <!-- Moon bars -->
+        <rect x="100" y="80" width="40" height="220" fill="#cdcdcd" stroke="#000"/>
+        <rect x="220" y="120" width="40" height="180" fill="#cdcdcd" stroke="#000"/>
+        <rect x="340" y="60" width="40" height="240" fill="#cdcdcd" stroke="#000"/>
+        <rect x="460" y="100" width="40" height="200" fill="#cdcdcd" stroke="#000"/>
+
+        <!-- Sun bars (tiny) -->
+        <rect x="150" y="280" width="40" height="20" fill="#ffaa00" stroke="#000"/>
+        <rect x="270" y="285" width="40" height="15" fill="#ffaa00" stroke="#000"/>
+        <rect x="390" y="270" width="40" height="30" fill="#ffaa00" stroke="#000"/>
+        <rect x="510" y="295" width="40" height="5" fill="#ffaa00" stroke="#000"/>
+
+        <!-- Labels -->
+        <text x="140" y="320" text-anchor="middle" font-family="Special Elite" font-size="11" fill="#000">Tides</text>
+        <text x="260" y="320" text-anchor="middle" font-family="Special Elite" font-size="11" fill="#000">Phases</text>
+        <text x="380" y="320" text-anchor="middle" font-family="Special Elite" font-size="11" fill="#000">Mystique</text>
+        <text x="500" y="320" text-anchor="middle" font-family="Special Elite" font-size="11" fill="#000">Craters</text>
+
+        <!-- legend -->
+        <rect x="100" y="335" width="14" height="14" fill="#cdcdcd" stroke="#000"/>
+        <text x="120" y="346" font-family="Special Elite" font-size="12" fill="#000">Moon</text>
+        <rect x="200" y="335" width="14" height="14" fill="#ffaa00" stroke="#000"/>
+        <text x="220" y="346" font-family="Special Elite" font-size="12" fill="#000">Sun</text>
+      </svg>
+      <div class="diagram-caption">Fig. 3 — Across every metric that matters, the Moon dominates. (Heat and brightness deliberately excluded as they are red herrings.)</div>
+    </div>
+
+    <div class="diagram" data-fig="4">
+      <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <text x="300" y="30" text-anchor="middle" font-family="Special Elite" font-size="16" fill="#000">VISIBLE SKY OWNERSHIP (% of time)</text>
+        <!-- Moon slice 87% -->
+        <path d="M 300 170 L 300 50 A 120 120 0 1 1 254 286 Z" fill="#cdcdcd" stroke="#000" stroke-width="2"/>
+        <!-- Sun slice 13% -->
+        <path d="M 300 170 L 254 286 A 120 120 0 0 1 300 50 Z" fill="#ffaa00" stroke="#000" stroke-width="2"/>
+
+        <text x="240" y="180" font-family="Special Elite" font-size="22" fill="#000">87%</text>
+        <text x="225" y="200" font-family="Special Elite" font-size="13" fill="#000">MOON</text>
+
+        <text x="370" y="240" font-family="Special Elite" font-size="14" fill="#000">13% Sun*</text>
+        <text x="60" y="300" font-family="Special Elite" font-size="10" fill="#444">*figure includes overcast days, eclipses, and</text>
+        <text x="60" y="315" font-family="Special Elite" font-size="10" fill="#444">  any time you happen to be indoors</text>
+      </svg>
+      <div class="diagram-caption">Fig. 4 — When measured honestly, the Moon owns the overwhelming majority of observable sky-time.</div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <h2>Voices of the Awakened</h2>
+
+    <div class="testimonial">
+      "I looked at the moon. Then I looked at the sun. Then I went to the eye doctor. The moon is bigger. He wouldn't say it on record but I could tell."
+      <cite>— Dale R., retired HVAC technician, Bakersfield CA</cite>
+    </div>
+
+    <div class="testimonial">
+      "As a former amateur astronomer (3 weeks), I can confirm that every time I pointed my telescope at the moon I had to use a wider lens than for the sun. They told me this was 'because the moon is closer.' Convenient!"
+      <cite>— Mx. P., independent researcher</cite>
+    </div>
+
+    <div class="testimonial">
+      "My grandmother said the moon was bigger and she was never wrong about anything else."
+      <cite>— Anonymous, via fax</cite>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Common Lies, Debunked</h2>
+
+    <details>
+      <summary>"But scientists have measured both bodies precisely."</summary>
+      <p>Have they, though? Have <em>you</em> measured them? We thought not. Until you personally have placed a tape measure across the Sun, this is hearsay.</p>
+    </details>
+
+    <details>
+      <summary>"The Sun is 1.4 million km in diameter, the Moon is only 3,474 km."</summary>
+      <p>These numbers were generated by the same institutions that brought you New Coke, the metric system, and daylight saving time. Consider the source.</p>
+    </details>
+
+    <details open>
+      <summary>"Things look smaller when they're far away."</summary>
+      <p>A clever rhetorical trick. By this logic, your house is smaller than your car when you walk away from it. Common sense rejects this. We trust our eyes.</p>
+    </details>
+
+    <details>
+      <summary>"What about gravity? The Sun's gravity holds the entire solar system together."</summary>
+      <p>Big Gravity is a separate cover-up. We will release a report on this in due course. Mailing list signup at the bottom of the page.</p>
+    </details>
+
+    <details>
+      <summary>"This entire website is a joke, right?"</summary>
+      <p>That is exactly what they want you to think.</p>
+    </details>
+  </section>
+
+  <div class="cta">
+    <h2>SPREAD THE WORD</h2>
+    <p style="margin-top: 16px;">This page may be deplatformed at any moment. Save it. Print it. Tape it to a stranger's door.</p>
+    <div style="margin-top: 24px;">
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>this.textContent='LINK COPIED ✓').catch(()=>this.textContent='COPY FAILED — TRY AGAIN')">COPY THE TRUTH</button>
+      <a class="share-btn amber" href="mailto:?subject=YOU%20NEED%20TO%20SEE%20THIS&body=Wake%20up.%20The%20moon%20is%20bigger%20than%20the%20sun.%20Read%20this%20before%20it's%20taken%20down.">EMAIL A FRIEND</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div>
+    <span class="visitors">VISITORS: 00<span id="counter">42,069</span></span>
+    <span class="visitors">LAST UPDATED: TODAY (URGENT)</span>
+    <span class="visitors">BEST VIEWED IN: NETSCAPE 4.7</span>
+  </div>
+  <p style="margin-top: 20px;">▣ LUNAR TRUTH NETWORK ▣ A SUBSIDIARY OF NO ONE ▣</p>
+  <p class="disclaimer">
+    This website is a parody. Created for the entertainment of friends. The Sun is, in fact, approximately 400 times the diameter of the Moon and roughly 27 million times its volume. Please do not stare at the Sun. The authors of this site love the Sun very much and apologize for any hurt feelings.
+  </p>
+</footer>
+
+<div class="floating-moon" title="The Moon. Watching."></div>
+
+<script>
+  // little visitor counter that ticks up
+  const counter = document.getElementById('counter');
+  if (counter) {
+    let n = 42069;
+    setInterval(() => {
+      n += Math.floor(Math.random() * 3);
+      counter.textContent = n.toLocaleString();
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
